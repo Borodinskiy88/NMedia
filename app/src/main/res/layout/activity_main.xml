@@ -47,7 +47,8 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_more_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierTop"
@@ -77,12 +78,39 @@
         android:id="@+id/liked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_favorite_24"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="@id/barrierBottom"
-        app:layout_constraintTop_toTopOf="@id/barrierBottom"
         android:layout_marginTop="@dimen/indent"
-         />
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_baseline_favorite_border_24"
+        app:layout_constraintEnd_toEndOf="@id/barrierBottom"
+        app:layout_constraintTop_toTopOf="@id/barrierBottom" />
+
+    <TextView
+        android:id="@+id/likedCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="234"
+        app:layout_constraintStart_toEndOf="@id/liked"
+        app:layout_constraintTop_toTopOf="@id/liked" />
+
+    <ImageButton
+        android:id="@+id/share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_baseline_share_24"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/likedCount"
+        app:layout_constraintTop_toTopOf="@id/likedCount"/>
+
+    <TextView
+        android:id="@+id/shareCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="27"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/share"
+        app:layout_constraintTop_toTopOf="@id/share" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
