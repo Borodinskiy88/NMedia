@@ -112,6 +112,23 @@
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toTopOf="@id/share" />
 
+    <ImageButton
+        android:id="@+id/remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_baseline_remove_red_eye_24"
+        tools:layout_editor_absoluteX="314dp"
+        tools:layout_editor_absoluteY="249dp" />
+
+    <TextView
+        android:id="@+id/removeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="543"
+        tools:layout_editor_absoluteX="347dp"
+        tools:layout_editor_absoluteY="249dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
