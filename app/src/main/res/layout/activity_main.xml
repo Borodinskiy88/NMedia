@@ -7,15 +7,6 @@
     android:padding="@dimen/indent"
     tools:context=".MainActivity">
 
-    <!--    <TextView-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="@string/nmedia"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="@dimen/avatar_size"
@@ -70,8 +61,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/indent"
+        android:layout_marginBottom="@dimen/indent"
         android:autoLink="web"
         app:layout_constraintTop_toBottomOf="@id/barrierTop"
         tools:text="@sample/posts.json/data/content" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="content" />
+
+    <ImageButton
+        android:id="@+id/liked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_favorite_24"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="@id/barrierBottom"
+        app:layout_constraintTop_toTopOf="@id/barrierBottom"
+        android:layout_marginTop="@dimen/indent"
+         />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
