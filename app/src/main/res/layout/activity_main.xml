@@ -47,8 +47,7 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_more_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierTop"
@@ -62,9 +61,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/indent"
-        android:layout_marginBottom="@dimen/indent"
         android:autoLink="web"
         app:layout_constraintTop_toBottomOf="@id/barrierTop"
+        tools:layout_editor_absoluteX="@dimen/indent"
         tools:text="@sample/posts.json/data/content" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -97,11 +96,11 @@
         android:id="@+id/share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/indent"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_share_24"
-        android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@id/likedCount"
-        app:layout_constraintTop_toTopOf="@id/likedCount"/>
+        app:layout_constraintTop_toTopOf="@id/likedCount" />
 
     <TextView
         android:id="@+id/shareCount"
@@ -116,18 +115,21 @@
         android:id="@+id/remove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_remove_red_eye_24"
-        tools:layout_editor_absoluteX="314dp"
-        tools:layout_editor_absoluteY="249dp" />
+        app:layout_constraintEnd_toStartOf="@id/removeCount"
+        app:layout_constraintTop_toTopOf="@id/share" />
 
     <TextView
         android:id="@+id/removeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/indent"
+        android:layout_marginEnd="4dp"
         android:text="543"
-        tools:layout_editor_absoluteX="347dp"
-        tools:layout_editor_absoluteY="249dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrierBottom" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
