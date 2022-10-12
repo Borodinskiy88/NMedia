@@ -93,7 +93,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@id/liked"
         app:layout_constraintTop_toTopOf="@id/liked"
-        tools:text="@sample/posts.json/data/likedCount"/>
+        android:text="0"/>
 
 
     <ImageButton
@@ -114,7 +114,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toTopOf="@id/share"
-        tools:text="@sample/posts.json/data/shareCount" />
+        android:text="0"/>
 
     <ImageButton
         android:id="@+id/remove"
@@ -135,7 +135,8 @@
         android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barrierBottom"
-        tools:text="@sample/posts.json/data/removeCount" />
+        android:text="14"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
