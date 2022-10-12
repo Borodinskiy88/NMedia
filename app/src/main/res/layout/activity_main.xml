@@ -12,6 +12,7 @@
         android:layout_width="@dimen/avatar_size"
         android:layout_height="@dimen/avatar_size"
         android:padding="4dp"
+        android:contentDescription="@string/description_post_author_avatar"
         android:src="@drawable/post_avatar_drawable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -45,6 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/description_post_menu"
         android:src="@drawable/ic_baseline_more_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -79,6 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/indent"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/description_post_like"
         android:src="@drawable/ic_baseline_favorite_border_24"
         app:layout_constraintEnd_toEndOf="@id/barrierBottom"
         app:layout_constraintTop_toTopOf="@id/barrierBottom" />
@@ -88,9 +91,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="234"
         app:layout_constraintStart_toEndOf="@id/liked"
-        app:layout_constraintTop_toTopOf="@id/liked" />
+        app:layout_constraintTop_toTopOf="@id/liked"
+        tools:text="@sample/posts.json/data/likedCount"/>
+
 
     <ImageButton
         android:id="@+id/share"
@@ -98,6 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/indent"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/description_post_share"
         android:src="@drawable/ic_baseline_share_24"
         app:layout_constraintStart_toEndOf="@id/likedCount"
         app:layout_constraintTop_toTopOf="@id/likedCount" />
@@ -106,10 +111,10 @@
         android:id="@+id/shareCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="27"
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@id/share"
-        app:layout_constraintTop_toTopOf="@id/share" />
+        app:layout_constraintTop_toTopOf="@id/share"
+        tools:text="@sample/posts.json/data/shareCount" />
 
     <ImageButton
         android:id="@+id/remove"
@@ -117,6 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/description_post_remove"
         android:src="@drawable/ic_baseline_remove_red_eye_24"
         app:layout_constraintEnd_toStartOf="@id/removeCount"
         app:layout_constraintTop_toTopOf="@id/share" />
@@ -127,9 +133,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/indent"
         android:layout_marginEnd="4dp"
-        android:text="543"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barrierBottom" />
+        app:layout_constraintTop_toBottomOf="@+id/barrierBottom"
+        tools:text="@sample/posts.json/data/removeCount" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

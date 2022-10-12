@@ -2,4 +2,9 @@
 <resources>
     <string name="app_name">НМедиа</string>
     <string name="nmedia">НМедиа!</string>
+    <string name="description_post_author_avatar" translatable="false">Автор</string>
+    <string name="description_post_menu" translatable="false">Меню</string>
+    <string name="description_post_like" translatable="false">Лайки</string>
+    <string name="description_post_share" translatable="false">Поделиться</string>
+    <string name="description_post_remove">Просмотры</string>
 </resources>
