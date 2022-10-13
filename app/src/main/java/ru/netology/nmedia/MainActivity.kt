@@ -1,6 +1,7 @@
 package ru.netology.nmedia
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
 
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             if (post.likedByMe) {
                 liked?.setImageResource(R.drawable.ic_liked_favorite_24)
             }
-            likedCount?.text = post.likes.toString()
+            likedCount?.text = reformatCount(post.likes)
 
 
             liked?.setOnClickListener {
@@ -35,16 +36,17 @@ class MainActivity : AppCompatActivity() {
                     if (post.likedByMe) R.drawable.ic_liked_favorite_24 else R.drawable.ic_baseline_favorite_border_24
                 )
                 if (post.likedByMe) post.likes++ else post.likes--
-                likedCount?.text = post.likes.toString()
+                likedCount?.text = reformatCount(post.likes)
             }
 
-
-            shareCount?.text = post.share.toString()
+            shareCount?.text = reformatCount(post.share)
 
             share?.setOnClickListener {
                 post.share++
-                shareCount?.text = post.share.toString()
+                shareCount?.text = reformatCount(post.share)
             }
+
+            removeCount?.text = reformatCount(post.remove)
         }
     }
 }
