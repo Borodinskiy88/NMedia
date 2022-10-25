@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                 viewModel.likeById(it.id)
             },
             shareClickListener = {
-                viewModel.share(it.id)
+                viewModel.shareById(it.id)
             }
         )
         binding.posts.adapter = adapter
