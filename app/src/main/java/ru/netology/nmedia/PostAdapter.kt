@@ -2,22 +2,26 @@ package ru.netology.nmedia
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.databinding.CardPostBinding
 
+
 typealias OnLikeListener = (Post) -> Unit
 typealias OnShareListener = (Post) -> Unit
+typealias OnRemoveListener = (Post) -> Unit
 
 class PostAdapter(
     private val likeClickListener: OnLikeListener,
-    private val shareClickListener: OnShareListener
+    private val shareClickListener: OnShareListener,
+    private val removeClickListener: OnRemoveListener
 ) : ListAdapter<Post, PostViewHolder>(PostItemCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = CardPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PostViewHolder(binding, likeClickListener, shareClickListener)
+        return PostViewHolder(binding, likeClickListener, shareClickListener, removeClickListener)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
@@ -29,7 +33,8 @@ class PostAdapter(
 class PostViewHolder(
     private val binding: CardPostBinding,
     private val likeClickListener: OnLikeListener,
-    private val shareClickListener: OnShareListener
+    private val shareClickListener: OnShareListener,
+    private val removeClickListener: OnRemoveListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(post: Post) {
@@ -49,6 +54,21 @@ class PostViewHolder(
             }
             share.setOnClickListener {
                 shareClickListener(post)
+            }
+
+            menu.setOnClickListener {
+                PopupMenu(it.context, it).apply {
+                    inflate(R.menu.options_post)
+                    setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.remove -> {
+                                removeClickListener(post)
+                                true
+                            }
+                            else -> false
+                        }
+                    }
+                }.show()
             }
         }
     }

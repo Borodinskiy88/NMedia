@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
 //        binding.root.setOnClickListener{ Toast.makeText(this, "Биндинг", Toast.LENGTH_LONG).show()}
 //        binding.liked.setOnClickListener { Toast.makeText(this, "Лайки", Toast.LENGTH_LONG).show() }
 //        binding.avatar.setOnClickListener{ Toast.makeText(this, "Аватар", Toast.LENGTH_SHORT).show()}
+
         val viewModel: PostViewModel by viewModels()
         val adapter = PostAdapter(
             likeClickListener = {
@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
             },
             shareClickListener = {
                 viewModel.shareById(it.id)
+            },
+            removeClickListener = {
+                viewModel.removeById(it.id)
             }
         )
         binding.posts.adapter = adapter
