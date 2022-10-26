@@ -27,10 +27,10 @@ class PostViewModel : ViewModel() {
         edited.value = empty
     }
     fun changeContent(content: String) {
-        edited.value?.let {
-            val text = content.trim()
-            if (it.content == text) { return }
-            edited.value = it.copy(content = text)
+        val text = content.trim()
+        if (edited.value?.content == text) {
+            return
         }
+        edited.value = edited.value?.copy(content = text)
     }
 }
