@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.databinding.CardPostBinding
 
 
+
 typealias OnLikeListener = (Post) -> Unit
 typealias OnShareListener = (Post) -> Unit
 typealias OnRemoveListener = (Post) -> Unit

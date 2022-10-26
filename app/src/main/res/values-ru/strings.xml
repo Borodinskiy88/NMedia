@@ -8,4 +8,6 @@
     <string name="description_post_share" translatable="false">Поделиться</string>
     <string name="description_post_remove">Просмотры</string>
     <string name="post_text">Текст поста</string>
+    <string name="edit_message">Редактирования</string>
+    <string name="cancel_editing">Отмена редактирования</string>
 </resources>
