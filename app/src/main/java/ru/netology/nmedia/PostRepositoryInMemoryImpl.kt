@@ -35,8 +35,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             liked = 999,
             share = 120,
             remove = 10200
-        )
-    )
+        ),
+    ).reversed()
     private val data = MutableLiveData(posts)
 
     override fun getAll(): LiveData<List<Post>> = data
@@ -64,7 +64,6 @@ class PostRepositoryInMemoryImpl : PostRepository {
 
     override fun save(post: Post) {
         if (post.id == 0L) {
-
             posts = listOf(
                 post.copy(
                     id = nextId++,
