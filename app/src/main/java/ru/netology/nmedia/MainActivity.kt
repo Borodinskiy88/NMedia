@@ -15,21 +15,37 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel: PostViewModel by viewModels()
-        val adapter = PostAdapter(
-            likeClickListener = {
-                viewModel.likeById(it.id)
-            },
-            shareClickListener = {
-                viewModel.shareById(it.id)
-            },
-            removeClickListener = {
-                viewModel.removeById(it.id)
+        val adapter = PostAdapter(object : OnInteractionListener {
+            override fun onEdit(post: Post) {
+                viewModel.edit(post)
             }
-        )
-        binding.posts.adapter = adapter
 
+            override fun onLike(post: Post) {
+                viewModel.likeById(post.id)
+            }
+
+            override fun onRemove(post: Post) {
+                viewModel.removeById(post.id)
+            }
+
+            override fun onShare(post: Post) {
+                viewModel.shareById(post.id)
+            }
+        })
+
+        binding.posts.adapter = adapter
         viewModel.data.observe(this) { posts ->
             adapter.submitList(posts)
+        }
+
+        viewModel.edited.observe(this) { post ->
+            if (post.id == 0L) {
+                return@observe
+            }
+            with(binding.content) {
+                requestFocus()
+                setText(post.content)
+            }
         }
 
         binding.save.setOnClickListener {
