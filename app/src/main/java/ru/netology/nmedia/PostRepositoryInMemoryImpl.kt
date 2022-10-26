@@ -14,7 +14,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             likedByMe = false,
             liked = 9,
             share = 12000,
-            remove = 10200000
+            views = 10200000
         ),
         Post(
             id = nextId++,
@@ -24,7 +24,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             likedByMe = false,
             liked = 0,
             share = 0,
-            remove = 0
+            views = 0
         ),
         Post(
             id = nextId++,
@@ -34,7 +34,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             likedByMe = false,
             liked = 999,
             share = 120,
-            remove = 10200
+            views = 10200
         ),
     ).reversed()
     private val data = MutableLiveData(posts)

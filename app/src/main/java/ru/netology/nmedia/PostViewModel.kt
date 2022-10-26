@@ -10,7 +10,7 @@ private val empty = Post(
     published = "",
     liked = 0,
     share = 0,
-    remove = 0,
+    views = 0,
     likedByMe = false
 )
 

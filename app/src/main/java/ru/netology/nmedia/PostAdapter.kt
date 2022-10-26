@@ -45,7 +45,7 @@ class PostViewHolder(
             )
             likedCount.text = reformatCount(post.liked)
             shareCount.text = reformatCount(post.share)
-            removeCount.text = reformatCount(post.remove)
+            viewsCount.text = reformatCount(post.views)
 
             liked.setOnClickListener {
                 onInteractionListener.onLike(post)
