@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             override fun onShare(post: Post) {
                 viewModel.shareById(post.id)
             }
+
         })
 
         binding.posts.adapter = adapter
@@ -45,6 +46,15 @@ class MainActivity : AppCompatActivity() {
             with(binding.content) {
                 requestFocus()
                 setText(post.content)
+            }
+        }
+
+        binding.cancelEdit.setOnClickListener {
+            with(binding.content) {
+                viewModel.cancelEdit()
+                setText("")
+                clearFocus()
+                AndroidUtils.hideKeyboard(this)
             }
         }
 
