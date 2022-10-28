@@ -81,9 +81,4 @@ class PostRepositoryInMemoryImpl : PostRepository {
         }
         data.value = posts
     }
-
-    override fun cancelEdit(post: Post) {
-        posts = posts.map { it }
-        data.value = posts
-    }
 }
