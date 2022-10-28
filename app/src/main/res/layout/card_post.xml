@@ -117,18 +117,18 @@
         android:text="0"/>
 
     <ImageButton
-        android:id="@+id/remove"
+        android:id="@+id/views"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/description_post_remove"
         android:src="@drawable/ic_baseline_remove_red_eye_24"
-        app:layout_constraintEnd_toStartOf="@id/removeCount"
+        app:layout_constraintEnd_toStartOf="@id/viewsCount"
         app:layout_constraintTop_toTopOf="@id/share" />
 
     <TextView
-        android:id="@+id/removeCount"
+        android:id="@+id/viewsCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/indent"
