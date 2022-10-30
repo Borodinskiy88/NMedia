@@ -15,4 +15,6 @@
     <string name="description_post_save">Сохранить</string>
     <string name="description_cancel_edit">Отмена редактирования</string>
     <string name="liked_count">Количество лайков</string>
+    <string name="share_count">Количество репостов</string>
+    <string name="views_count">Количество просмотров</string>
 </resources>
