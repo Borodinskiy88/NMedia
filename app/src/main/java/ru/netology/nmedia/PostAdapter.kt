@@ -40,10 +40,10 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            liked.setImageResource(
-                if (post.likedByMe) R.drawable.ic_liked_favorite_24 else R.drawable.ic_baseline_favorite_border_24
-            )
-            likedCount.text = reformatCount(post.liked)
+
+            liked.isChecked = post.likedByMe
+
+            liked.text = reformatCount(post.liked)
             shareCount.text = reformatCount(post.share)
             viewsCount.text = reformatCount(post.views)
 
