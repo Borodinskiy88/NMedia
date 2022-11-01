@@ -13,4 +13,7 @@
     <string name="edit_message">Edit message</string>
     <string name="menu_remove">Remove</string>
     <string name="menu_edit">Edit</string>
+    <string name="liked_count">0</string>
+    <string name="share_count">0</string>
+    <string name="views_count">0</string>
 </resources>
