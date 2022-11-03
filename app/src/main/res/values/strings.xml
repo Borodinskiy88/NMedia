@@ -16,4 +16,7 @@
     <string name="liked_count">0</string>
     <string name="share_count">0</string>
     <string name="views_count">0</string>
+    <string name="chooser_share_post">Share post</string>
+    <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="add_post">Add post</string>
 </resources>

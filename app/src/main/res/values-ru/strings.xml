@@ -17,4 +17,7 @@
     <string name="liked_count">Количество лайков</string>
     <string name="share_count">Количество репостов</string>
     <string name="views_count">Количество просмотров</string>
+    <string name="chooser_share_post">Репост поста</string>
+    <string name="error_empty_content">Содержимое не может быть пустым</string>
+    <string name="add_post">Добавить пост</string>
 </resources>
