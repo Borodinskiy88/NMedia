@@ -1,6 +1,8 @@
 package ru.netology.nmedia
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
@@ -13,6 +15,7 @@ interface OnInteractionListener {
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
     fun onShare(post: Post) {}
+    fun onVideo(post: Post) {}
 }
 
 class PostAdapter(
@@ -35,6 +38,7 @@ class PostViewHolder(
     private val onInteractionListener: OnInteractionListener,
 ) : RecyclerView.ViewHolder(binding.root) {
 
+    @SuppressLint("ResourceType")
     fun bind(post: Post) {
         binding.apply {
             author.text = post.author
@@ -47,11 +51,23 @@ class PostViewHolder(
             share.text = reformatCount(post.share)
             views.text = reformatCount(post.views)
 
+            if (post.videoUrl != null) {
+                videoGroup.visibility = View.VISIBLE
+                video.url.text = reformatWebLink(post.videoUrl)
+            } else {
+                videoGroup.visibility = View.GONE
+            }
+
             liked.setOnClickListener {
                 onInteractionListener.onLike(post)
             }
+
             share.setOnClickListener {
                 onInteractionListener.onShare(post)
+            }
+
+            videoGroup.setOnClickListener {
+                onInteractionListener.onVideo(post)
             }
 
             menu.setOnClickListener {

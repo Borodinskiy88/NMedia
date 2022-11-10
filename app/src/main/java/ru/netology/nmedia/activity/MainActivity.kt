@@ -1,6 +1,7 @@
 package ru.netology.nmedia.activity
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.result.launch
 import androidx.activity.viewModels
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         val viewModel: PostViewModel by viewModels()
         val adapter = PostAdapter(object : OnInteractionListener {
@@ -42,6 +44,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(shareIntent)
             }
 
+            override fun onVideo(post: Post) {
+                if (post.videoUrl == null) return
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoUrl))
+                startActivity(intent)
+            }
         })
 
         binding.posts.adapter = adapter
@@ -97,5 +104,10 @@ class MainActivity : AppCompatActivity() {
         binding.fab.setOnClickListener {
             newPostLauncher.launch()
         }
+
+        viewModel.edited.observe(this) {
+            viewModel.edited.value?.content
+        }
     }
 }
+

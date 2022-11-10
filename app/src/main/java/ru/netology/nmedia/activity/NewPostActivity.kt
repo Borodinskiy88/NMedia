@@ -25,3 +25,32 @@ class NewPostActivity : AppCompatActivity() {
         }
     }
 }
+
+class EditPostActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val binding = ActivityNewPostBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.edit.requestFocus()
+        val text = intent.getStringExtra(Intent.EXTRA_TEXT)
+
+        if (text != null) {
+            binding.edit.setText(text)
+            binding.edit.setSelection(text.length)
+        }
+
+        binding.ok.setOnClickListener {
+            val intent = Intent()
+            if (binding.edit.text.isNullOrBlank()) {
+                setResult(Activity.RESULT_CANCELED, intent)
+            } else {
+                val content = binding.edit.text.toString()
+                intent.putExtra(Intent.EXTRA_TEXT, content)
+                setResult(Activity.RESULT_OK, intent)
+            }
+            finish()
+        }
+    }
+}

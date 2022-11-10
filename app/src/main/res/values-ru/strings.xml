@@ -2,10 +2,10 @@
 <resources>
     <string name="app_name">НМедиа</string>
     <string name="nmedia">НМедиа!</string>
-    <string name="description_post_author_avatar" translatable="false">Автор</string>
-    <string name="description_post_menu" translatable="false">Меню</string>
-    <string name="description_post_like" translatable="false">Лайки</string>
-    <string name="description_post_share" translatable="false">Поделиться</string>
+    <string name="description_post_author_avatar" >Автор</string>
+    <string name="description_post_menu" >Меню</string>
+    <string name="description_post_like" >Лайки</string>
+    <string name="description_post_share" >Поделиться</string>
     <string name="description_post_remove">Просмотры</string>
     <string name="post_text">Текст поста</string>
     <string name="edit_message">Редактирования</string>
@@ -20,4 +20,6 @@
     <string name="chooser_share_post">Репост поста</string>
     <string name="error_empty_content">Содержимое не может быть пустым</string>
     <string name="add_post">Добавить пост</string>
+    <string name="video_Poster">Постер</string>
+    <string name="play">Начать просмотр</string>
 </resources>
