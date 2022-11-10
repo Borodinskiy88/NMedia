@@ -66,7 +66,7 @@ class PostViewHolder(
                 onInteractionListener.onShare(post)
             }
 
-            videoGroup.setOnClickListener {
+            video.videoPoster.setOnClickListener {
                 onInteractionListener.onVideo(post)
             }
 
