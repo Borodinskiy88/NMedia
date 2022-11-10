@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onVideo(post: Post) {
-                if (post.videoUrl == null) return
+   //             if (post.videoUrl == null) return
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoUrl))
                 startActivity(intent)
             }
