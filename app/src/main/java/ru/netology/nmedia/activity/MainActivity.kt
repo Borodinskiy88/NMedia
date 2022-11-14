@@ -3,7 +3,6 @@ package ru.netology.nmedia.activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.launch
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,11 +17,25 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val viewModel: PostViewModel by viewModels()
+
+        val newPostLauncher = registerForActivityResult(NewPostResultContract()) { post ->
+            post ?: return@registerForActivityResult
+            viewModel.changeContent(post)
+            viewModel.save()
+        }
+
+        val editPostLauncher = registerForActivityResult(EditResultContract()) { post ->
+            post ?: return@registerForActivityResult
+            viewModel.changeContent(post)
+            viewModel.save()
+        }
+
         val adapter = PostAdapter(object : OnInteractionListener {
+
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
+                editPostLauncher.launch(post.content)
             }
 
             override fun onLike(post: Post) {
@@ -46,7 +59,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onVideo(post: Post) {
-                //             if (post.videoUrl == null) return
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoUrl))
                 startActivity(intent)
             }
@@ -57,53 +69,8 @@ class MainActivity : AppCompatActivity() {
             adapter.submitList(posts)
         }
 
-//        viewModel.edited.observe(this) { post ->
-//            if (post.id == 0L) {
-//                return@observe
-//            }
-//            with(binding.content) {
-//                requestFocus()
-//                setText(post.content)
-//            }
-//        }
-
-//        binding.cancelEdit.setOnClickListener {
-//            with(binding.content) {
-//                viewModel.cancelEdit()
-//                setText("")
-//                clearFocus()
-//                AndroidUtils.hideKeyboard(this)
-//            }
-//        }
-//
-//        binding.save.setOnClickListener {
-//            with(binding.content) {
-//                if (text.isNullOrBlank()) {
-//                    Toast.makeText(
-//                        this@MainActivity,
-//                        "Content can be empty",
-//                        Toast.LENGTH_LONG
-//                    ).show()
-//                    return@setOnClickListener
-//                }
-//
-//                viewModel.changeContent(text.toString())
-//                viewModel.save()
-//
-//                setText("")
-//                clearFocus()
-//                AndroidUtils.hideKeyboard(this)
-//            }
-//        }
-
-        val postLauncher = registerForActivityResult(EditResultContract()) { result ->
-            result ?: return@registerForActivityResult
-            viewModel.changeContent(result)
-            viewModel.save()
-        }
-
         binding.fab.setOnClickListener {
-            postLauncher.launch(null)
+            newPostLauncher.launch()
         }
 
         viewModel.edited.observe(this) {
@@ -111,17 +78,6 @@ class MainActivity : AppCompatActivity() {
             if (it.id == 0L) {
                 return@observe
             }
-            //           viewModel.edited.value?.content
-//            viewModel.edit(it)
-//            postLauncher.launch(viewModel.edited.value?.content)
-            //           postLauncher.launch(it.content)
-
-                val editPostLauncher = registerForActivityResult(EditResultContract()) { result ->
-                    result ?: return@registerForActivityResult
-                    viewModel.edit(it)
-                }
-                editPostLauncher.launch(viewModel.edited.value?.content)
-
         }
     }
 }
