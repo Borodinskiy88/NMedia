@@ -3,6 +3,7 @@ package ru.netology.nmedia.activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.launch
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onVideo(post: Post) {
-   //             if (post.videoUrl == null) return
+                //             if (post.videoUrl == null) return
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoUrl))
                 startActivity(intent)
             }
@@ -95,18 +96,32 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
 
-        val newPostLauncher = registerForActivityResult(NewPostResultContract()) { result ->
+        val postLauncher = registerForActivityResult(EditResultContract()) { result ->
             result ?: return@registerForActivityResult
             viewModel.changeContent(result)
             viewModel.save()
         }
 
         binding.fab.setOnClickListener {
-            newPostLauncher.launch()
+            postLauncher.launch(null)
         }
 
         viewModel.edited.observe(this) {
             viewModel.edited.value?.content
+            if (it.id == 0L) {
+                return@observe
+            }
+            //           viewModel.edited.value?.content
+//            viewModel.edit(it)
+//            postLauncher.launch(viewModel.edited.value?.content)
+            //           postLauncher.launch(it.content)
+
+                val editPostLauncher = registerForActivityResult(EditResultContract()) { result ->
+                    result ?: return@registerForActivityResult
+                    viewModel.edit(it)
+                }
+                editPostLauncher.launch(viewModel.edited.value?.content)
+
         }
     }
 }
