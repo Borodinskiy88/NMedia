@@ -1,7 +1,8 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ru.netology.nmedia.Post
 
 class PostRepositoryInMemoryImpl : PostRepository {
     private var nextId = 1L
@@ -14,7 +15,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             likedByMe = false,
             liked = 9,
             share = 12000,
-            views = 10200000
+            views = 10200000,
+            videoUrl = "https://www.youtube.com/watch?v=Wd2QzQnNNmk"
         ),
         Post(
             id = nextId++,
@@ -24,7 +26,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             likedByMe = false,
             liked = 0,
             share = 0,
-            views = 0
+            views = 0,
+            videoUrl = "https://www.youtube.com/watch?v=UHbFLtvUosM"
         ),
         Post(
             id = nextId++,

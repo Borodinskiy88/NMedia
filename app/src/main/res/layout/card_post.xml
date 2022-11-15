@@ -7,6 +7,26 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/indent">
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/videoGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="1"
+        android:background="@android:color/background_light"
+        android:visibility="visible"
+        app:constraint_referenced_ids="video" />
+
+    <include
+        android:id="@+id/video"
+        layout="@layout/video_module"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintBottom_toTopOf="@id/barrierBottom"
+        />
+
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="@dimen/avatar_size"
@@ -113,4 +133,3 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
