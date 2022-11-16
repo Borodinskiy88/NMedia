@@ -16,7 +16,40 @@ class PostRepositorySharedPreferencesImpl(
     private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
     private val key = "posts"
     private var nextId = 1L
-    private var posts = emptyList<Post>()
+    private var posts = listOf(
+        Post(
+            id = nextId++,
+            author = "Нетология. Университет интернет-профессий будущего",
+            content = "Напоминаем!!! Это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
+            published = "21 октября в 16:36",
+            likedByMe = false,
+            liked = 9,
+            share = 12000,
+            views = 10200000,
+            videoUrl = "https://www.youtube.com/watch?v=Wd2QzQnNNmk"
+        ),
+        Post(
+            id = nextId++,
+            author = "Нетология. Университет интернет-профессий будущего",
+            content = "Знаний хватит на всех: на следующей неделе разбираемся с разработкой мобильных приложений, учимся рассказывать истории и составлять PR-стратегию прямо на бесплатных занятиях",
+            published = "10 октября в 21:26",
+            likedByMe = false,
+            liked = 0,
+            share = 0,
+            views = 0,
+            videoUrl = "https://www.youtube.com/watch?v=UHbFLtvUosM"
+        ),
+        Post(
+            id = nextId++,
+            author = "Нетология. Университет интернет-профессий будущего",
+            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
+            published = "6 октября в 16:36",
+            likedByMe = false,
+            liked = 999,
+            share = 120,
+            views = 10200
+        ),
+    ).reversed()
     private val data = MutableLiveData(posts)
 
     init {
@@ -60,7 +93,8 @@ class PostRepositorySharedPreferencesImpl(
                     id = nextId++,
                     author = "Некто",
                     likedByMe = false,
-                    published = "Только что"
+                    published = "Только что",
+                    videoUrl = "https://www.youtube.com/watch?v=Wd2QzQnNNmk"
                 )
             ) + posts
             data.value = posts

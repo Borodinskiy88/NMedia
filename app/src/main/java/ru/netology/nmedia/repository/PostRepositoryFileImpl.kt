@@ -8,7 +8,7 @@ import com.google.gson.reflect.TypeToken
 import ru.netology.nmedia.Post
 
 class PostRepositoryFileImpl(
-    private val context: Context,
+    private val context: Context
 ) : PostRepository {
     private val gson = Gson()
     private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type

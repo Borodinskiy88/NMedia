@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.repository.PostRepository
-import ru.netology.nmedia.repository.PostRepositoryFileImpl
+import ru.netology.nmedia.repository.PostRepositorySharedPreferencesImpl
 
 private val empty = Post(
     id = 0,
@@ -20,8 +20,8 @@ private val empty = Post(
 
 class PostViewModel(application: Application) : AndroidViewModel(application) {
     //    private val repository: PostRepository = PostRepositoryInMemoryImpl()
-//    private val repository: PostRepository = PostRepositorySharedPreferencesImpl(application)
-    private val repository: PostRepository = PostRepositoryFileImpl(application)
+    private val repository: PostRepository = PostRepositorySharedPreferencesImpl(application)
+//    private val repository: PostRepository = PostRepositoryFileImpl(application)
 
     val data = repository.getAll()
     val edited = MutableLiveData(empty)
@@ -38,6 +38,7 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
         edited.value?.let { repository.save(it) }
         edited.value = empty
     }
+
     fun changeContent(content: String) {
         val text = content.trim()
         if (edited.value?.content == text) {
