@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.*
+import ru.netology.nmedia.activity.SinglePostFragment.Companion.postIdArg
 import ru.netology.nmedia.databinding.FragmentFeedBinding
 
 class FeedFragment : Fragment() {
@@ -36,8 +37,6 @@ class FeedFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putString("editedText", text)
                 findNavController().navigate(R.id.action_feedFragment_to_editPostFragment, bundle)
-                //               viewModel.edit(post)
-                //               editPostLauncher.launch(post.content)
             }
 
             override fun onLike(post: Post) {
@@ -63,6 +62,13 @@ class FeedFragment : Fragment() {
             override fun onVideo(post: Post) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.videoUrl))
                 startActivity(intent)
+            }
+
+            override fun onOpenPost(post: Post) {
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_singlePostFragment,
+                    Bundle().apply { postIdArg = post.id.toString() }
+                )
             }
         })
 

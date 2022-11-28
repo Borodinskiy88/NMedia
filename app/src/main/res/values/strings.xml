@@ -21,4 +21,5 @@
     <string name="add_post">Add post</string>
     <string name="video_Poster">Add post</string>
     <string name="play">Add post</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>
