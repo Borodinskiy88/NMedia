@@ -18,7 +18,10 @@ class SinglePostFragment : Fragment() {
         var Bundle.postIdArg by StringArg
     }
 
-    private val viewModel by viewModels<PostViewModel>(ownerProducer = ::requireParentFragment)
+    private val viewModel: PostViewModel by viewModels(
+        ownerProducer = ::requireParentFragment
+    )
+
     private lateinit var binding: FragmentSinglePostBinding
 
     override fun onCreateView(
