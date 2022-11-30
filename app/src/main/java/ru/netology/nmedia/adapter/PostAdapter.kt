@@ -1,4 +1,4 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,16 +8,12 @@ import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.netology.nmedia.Post
+import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
+import ru.netology.nmedia.utils.PostService.reformatCount
+import ru.netology.nmedia.utils.PostService.reformatWebLink
 
-interface OnInteractionListener {
-    fun onLike(post: Post) {}
-    fun onEdit(post: Post) {}
-    fun onRemove(post: Post) {}
-    fun onShare(post: Post) {}
-    fun onVideo(post: Post) {}
-    fun onOpenPost(post: Post) {}
-}
 
 class PostAdapter(
     private val onInteractionListener: OnInteractionListener
