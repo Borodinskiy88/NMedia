@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.Post
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
-import ru.netology.nmedia.utils.PostService.reformatCount
-import ru.netology.nmedia.utils.PostService.reformatWebLink
+import ru.netology.nmedia.utils.ReformatValues.reformatCount
+import ru.netology.nmedia.utils.ReformatValues.reformatWebLink
 
 
 class PostAdapter(
