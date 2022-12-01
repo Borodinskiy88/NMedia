@@ -3,8 +3,9 @@ package ru.netology.nmedia
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import ru.netology.nmedia.db.AppDb
 import ru.netology.nmedia.repository.PostRepository
-import ru.netology.nmedia.repository.PostRepositorySharedPreferencesImpl
+import ru.netology.nmedia.repository.PostRepositorySQLiteImpl
 
 private val empty = Post(
     id = 0,
@@ -19,8 +20,12 @@ private val empty = Post(
 )
 
 class PostViewModel(application: Application) : AndroidViewModel(application) {
-    //    private val repository: PostRepository = PostRepositoryInMemoryImpl()
-    private val repository: PostRepository = PostRepositorySharedPreferencesImpl(application)
+    private val repository: PostRepository = PostRepositorySQLiteImpl(
+        AppDb.getInstance(application).postDao
+    )
+
+//    private val repository: PostRepository = PostRepositoryInMemoryImpl()
+//    private val repository: PostRepository = PostRepositorySharedPreferencesImpl(application)
 //    private val repository: PostRepository = PostRepositoryFileImpl(application)
 
     val data = repository.getAll()
